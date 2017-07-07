@@ -422,6 +422,8 @@ var resizePizzas = function(size) {
   changeSliderLabel(size);
 
   // Iterates through pizza elements on the page and changes their widths
+  //restructured the changePizzaSlices function eliminating repetetive info gathering from the DOM
+  // to reduce time taken to resize pizzas using slider in pizza.html.
   function changePizzaSizes(size) {
     switch(size) {
       case "1" :
@@ -486,11 +488,13 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-
+  //create variable scroll_top to remove the element of scrollTop out of the
+  //for loop to eliminate forced layout in performance.
+  var scroll_top = document.body.scrollTop;
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+     var phase = Math.sin((scroll_top / 1250) + (i % 5));
+     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -520,5 +524,6 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  updatePositions();
+
+  //  updatePositions();
 });
