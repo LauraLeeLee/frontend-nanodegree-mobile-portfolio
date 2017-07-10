@@ -497,6 +497,7 @@ function updatePositions() {
      items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
+
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -514,7 +515,8 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  //reduced the iteration of the for loop from 200 to 24. 200 wasn't necessary for outcome of pizzas
+  for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -525,5 +527,5 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
 
-  //  updatePositions();
+  updatePositions();
 });
