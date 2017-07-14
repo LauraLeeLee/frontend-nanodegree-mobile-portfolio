@@ -15,4 +15,18 @@
 
 2. created a new variable __items__, moving the line of code __document.querySelectorAll('.mover');__ to this variable to gather information once from the DOM, storing it in the variable to use in the for loop in the function __updatePositions__.
 
-3. The __for__ loop in __document.addEventListener('DOMContentLoaded', function() {__ , I reduced the number of times the loop iterates from 200 to 24. 24 iterations produces same effect as 200 with less runs of the loop.
+Create a new variable __scroll_top__ to hold the value of the line of code- document.body.scrollTop/1250;
+
+Call the variable for __phase__ in the initialization of the for loop within updatePositions so the variable is created once.
+
+3. The __for__ loop in __document.addEventListener('DOMContentLoaded', function() {__ , I reduced the number of times the loop iterates from 200 to 24. 24 iterations produces same effect as 200 with less runs of the loop. Called the variable __elem__ in the initialization of the for loop so it is created once.
+
+Exchanged getElementById for querySelector.  
+
+4. In the changePizzaSizes function, moved declaration of pizzasDiv outside the for loop for only one DOM call. Not needed to iterate it.
+
+5. In resizePizzas function, exchange querySelector()for getElementById().
+
+6. In changePizzaSizes function exchange querySelector for getElementsByClassName.
+
+7. In changePizzaSizes function, create variable for lenght of the object array in the initialization of the for loop.
